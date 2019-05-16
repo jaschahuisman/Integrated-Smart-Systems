@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>OvChat</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="popup">
+            <p>De praatpaal wilt graag leren van jouw gebruik. Wil je anoniem blijven?</p>
+            <button id="approve" class="hoverable">Anonieme modus</button>
+            <button id="approve" class="hoverable">Meer info</button>
+        </div>
+        <div id="landing">
+            <div class="navigation">
+                <button id="landing-info" class="material-icons hoverable">help</button>
+            </div>
+            <img id="landing-logo" src="./src/logo.svg" alt="logo-ovChat" style="height: 60px">
+            <h2 id="landing-message">Scan uw vervoersbewijs om te beginnen</h2>
+        </div>
+
+        <div id="main">
+            <div class="navigation">
+                <button id="nav-info" class="material-icons hoverable">help</button>
+                <button id="nav-logout" class="material-icons hoverable">exit_to_app</button>
+                <button id="nav-logout" class="material-icons hoverable">settings</button>
+            </div>
+
+            <div id="poll">
+                <h2 id="poll-title">Welk dier is je favoriet?</h2>
+                <div id="poll-1" class="poll-options">
+                    <button class="opt hoverable" id="q1o1"><img
+                            src="https://www.beeztees.nl/wp-content/uploads/2016/07/shutterstock_100765450.jpg"
+                            alt="">Hond</button>
+                    <button class="opt hoverable" id="q1o2"><img src="https://cdn.plein.nl/afbeeldingen/-1534947491.jpg"
+                            alt="">Kat</button>
+                    <button class="opt hoverable" id="q1o3"><img
+                            src="https://www.licg.nl/media/1325/hamster-740x433.jpg" alt="">Hamster</button>
+                    <button class="opt hoverable" id="q1o4"><img
+                            src="https://www.diergeneeskunde.nl/media/filebank/content-image/f0c29e8ba4144e4a9cc933363fa7385e/paard_uitgelicht.jpg"
+                            alt="">Paard</button>
+                </div>
+                <div id="poll-2" class="poll-options">
+                    <button class="opt hoverable" id="q1o1"><img
+                            src="https://static.boredpanda.com/blog/wp-content/uploads/2014/03/cute-smiling-animals-2.jpg"
+                            alt="">Ja</button>
+                    <button class="opt hoverable" id="q1o2"><img
+                            src="https://georgeknightlang.files.wordpress.com/2013/10/image87.jpg?w=700"
+                            alt="">Nee</button>
+                </div>
+                <div id="poll-3" class="poll-options">
+                    <button class="opt hoverable" id="q1o1"><img
+                            src="https://navimumbai.com/wp-content/uploads/2018/04/tech.jpg" alt="">Tech</button>
+                    <button class="opt hoverable" id="q1o2"><img
+                            src="https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/kodaikanal-2836301.jpg?crop=0,96,2560,1408&wid=4000&hei=2200&scl=0.64"
+                            alt="">Natuur</button>
+                    <button class="opt hoverable" id="q1o2"><img
+                            src="https://www.johnholland.com.au/media/2508/big-lifestyle.jpg" alt="">Lifestyle</button>
+                    <button class="opt hoverable" id="q1o2"><img
+                            src="https://images1.persgroep.net/rcs/3YyTqyfZ1TrVZFZMH953BEDJF4E/diocontent/107353242/_fitwidth/763?appId=e9b4e2a1869038ffcaf318a6d1463b0b&quality=0.8"
+                            alt="">Politiek</button>
+                </div>
+                <button id="poll-skip" class="hoverable">Overslaan</button>
+                <div id="recent-chats">
+                    <div id="chatlist">
+                        <img class="chatlist-chat hoverable"
+                            src="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-1/43145715_1911708885586634_6746095408021241856_n.jpg?_nc_cat=106&_nc_ht=scontent-ams3-1.xx&oh=ada8353b6b963539cd8228966260837d&oe=5D77BBD4"
+                            alt="">
+                        <img class="chatlist-chat hoverable"
+                            src="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/11742871_10207231963546756_6516155334668869585_n.jpg?_nc_cat=103&_nc_ht=scontent-ams3-1.xx&oh=be9a4310560150e6c27f450e6e326e59&oe=5D54B5E7"
+                            alt="">
+                        <img class="chatlist-chat hoverable"
+                            src="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/538441_202574203191252_556673527_n.jpg?_nc_cat=100&_nc_ht=scontent-ams3-1.xx&oh=52d4d6f85611bf288bace72f8204cab1&oe=5D60BD05"
+                            alt="">
+                    </div>
+                    <h3>Chats</h3>
+                </div>
+                <div id="new-match">
+                    <button id="new-match-button" class="material-icons hoverable">loyalty</button>
+                    <h3>Nieuwe match!</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA_wrBYZhvvQnRStjuDIQidoulLubXKLpc",
+            authDomain: "integrated-smart-systems.firebaseapp.com",
+            databaseURL: "https://integrated-smart-systems.firebaseio.com",
+            projectId: "integrated-smart-systems",
+            storageBucket: "integrated-smart-systems.appspot.com",
+            messagingSenderId: "685457536415",
+            appId: "1:685457536415:web:8efd1582b519cde7"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
+</body>
+
+</html>
