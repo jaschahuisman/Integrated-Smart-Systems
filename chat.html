@@ -24,7 +24,7 @@
 
             <div id="feedback">
                 <h3 id="feedback-title">Vind je dit gesprek leuk?</h3>
-                <form action="#" onsubmit="">
+                <form action="" onsubmit="return false">
                     <input id="range" type="range" name="" value="90">
                     <input class="hoverable" type="submit" name="" id="sendFeedback" value="😊">
                 </form>
@@ -35,10 +35,10 @@
                     
                 </div>
             </div>
-            <form id="inputcontainer" action="#" onsubmit="sendMessage()">
+            <form id="inputcontainer" action="" onsubmit="sendMessage(); return false">
                 <input type="text" id="messageInput" autocomplete="off" placeholder="Typ een bericht">
                 <input type="submit" class="material-icons hoverable" value="send">
-                <input type="button" class="material-icons hoverable" value="star">
+                <input type="button" class="material-icons hoverable" value="tag_faces">
             </form>
         </div>
 

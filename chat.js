@@ -34,7 +34,9 @@ const login = () => {
     auth.signInAnonymously().catch(function (error) { window.alert(error.message) });
 };
 const logout = () => {
-    auth.currentUser.delete().then(function () { }).catch(function (error) { window.alert(error.message) });
+    setTimeout(
+        auth.currentUser.delete().then(function () { chatRef.remove() }).catch(function (error) { window.alert(error.message) }), 5000
+    )
 };
 
 
@@ -42,13 +44,6 @@ const logout = () => {
 const loadMessages = () => {
     chatRef.once("value", (snapshot) => {
         chatContainer.innerHTML = "";
-
-        if (snapshot.val()) {
-            let chatLength = Object.keys(snapshot.val()).length;
-            if (chatLength > 20) {
-                feedbackContainer.style.display = "grid";
-            };
-        };
 
         snapshot.forEach((childsnap) => {
             let newMessageContent = childsnap.val();
@@ -80,16 +75,26 @@ const loadMessages = () => {
             chatContainer.appendChild(newMessage);
         });
 
-        if (!snapshot.val()) {
+        if (snapshot.val()) {
+            let chatLength = Object.keys(snapshot.val()).length;
+            if (chatLength == 10) {
+                feedbackContainer.style.display = "grid";
+            };
+            if (chatLength >= 3 && chatLength <= 8) {
+                let newAlert = document.createElement("div");
+                newAlert.classList.add("msg-container");
+                newAlert.classList.add("middle");
+                newAlert.innerHTML = `<div class="message"><p class="msg-content">Jullie zijn een match omdat jullie allebei een huisdier hebben, misschien een leuk onderwerp om over te kletsen! 😼</p></div>`;
+                chatContainer.appendChild(newAlert);
+            };
+
+            chatWrapper.scrollTop = chatContainer.scrollHeight;
+        } else if (!snapshot.val()) {
             let newAlert = document.createElement("div");
             newAlert.classList.add("msg-container");
             newAlert.classList.add("middle");
             newAlert.innerHTML = `<div class="message"><p class="msg-content">Zet de eeste stap!</p></div>`;
             chatContainer.appendChild(newAlert);
-        } else {
-            // chatWrapper.scrollTop = (chatContainer.scrollHeight - 515);
-            chatWrapper.scrollTop = chatContainer.scrollHeight;
-
         };
     });
 };
@@ -132,20 +137,32 @@ let feedbackBtn = document.querySelector("#sendFeedback");
 let feedbackTitle = document.querySelector("#feedback-title");
 
 let rangeFunc = (e) => {
-    console.log("a")
     if (range.value == 100) { feedbackBtn.value = "😇"; }
     else if (range.value > 75 && range.value < 100) { feedbackBtn.value = "😊"; }
-    else if (range.value > 50 && range.value < 75) { feedbackBtn.value = "😀"; }
-    else if (range.value > 25 && range.value < 50) { feedbackBtn.value = "😒"; }
-    else if (range.value > 10 && range.value < 25) { feedbackBtn.value = "😫"; }
-    else if (range.value > 0 && range.value < 10) { feedbackBtn.value = "😥"; }
+    else if (range.value > 50 && range.value < 76) { feedbackBtn.value = "😀"; }
+    else if (range.value > 25 && range.value < 51) { feedbackBtn.value = "😒"; }
+    else if (range.value > 10 && range.value < 26) { feedbackBtn.value = "😫"; }
+    else if (range.value > 0 && range.value < 11) { feedbackBtn.value = "😥"; }
     else if (range.value == 0) { feedbackBtn.value = "😭"; }
 }
 
 let likeFunc = (e) => {
-    console.log("a")
-    if (range.value > 50) { feedbackBtn.value = "Ja, graag! 😄"; }
-    else if (range.value <= 50) { feedbackBtn.value = "Nee, liever niet. 😌"; }
+    if (range.value > 59) { feedbackBtn.value = "Ja, graag! 😄"; }
+    if (range.value > 0 && range.value < 50) { feedbackBtn.value = "Misschien later! 🙃"; }
+    else if (range.value == 0) { feedbackBtn.value = "Nee, liever niet. 😌"; }
+
+    feedbackBtn.addEventListener("click", stayFunc);
+}
+
+let stayFunc = (e) => {
+    if (range.value > 59) {
+        feedbackContainer.style.display = "none";
+
+    } else if (range.value < 50) {
+        console.log(range.value);
+        window.location = "index.html";;
+        return false;
+    }
 }
 
 range.addEventListener("input", rangeFunc);
@@ -155,7 +172,7 @@ feedbackBtn.addEventListener("click", (e) => {
     feedbackTitle.innerText = "Wil je verdergaan met het gesprek?"
     range.removeEventListener("input", rangeFunc);
     range.addEventListener("input", likeFunc);
-    feedbackBtn.value = "Ja, graag! 😄";
+    likeFunc();
     feedbackBtn.style.fontSize = "14px";
     feedbackBtn.style.padding = "10px";
 })

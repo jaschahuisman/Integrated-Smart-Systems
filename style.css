@@ -49,6 +49,74 @@ button {
     justify-items: center;
 }
 
+#landing img {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#landing div .eye {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    height: 80px;
+    width: 90px;
+    margin: 20px;
+    background: rgb(231, 231, 231);
+}
+
+#landing div .eye:after {
+    /*pupil*/
+    position: absolute;
+    bottom: 17px;
+    right: 50px;
+    width: 17px;
+    height: 17px;
+    border: 6px solid rgb(85, 97, 124);
+    background: #000;
+    border-radius: 50%;
+    content: " ";
+    animation: eyes 16s ease-in-out 6s infinite;
+}
+
+@keyframes eyes {
+    0% {
+        transform: scale(1.1);
+        right: 30px;
+        bottom: 20px;
+    }
+    10% {
+        right: 20px;
+        bottom: 30px;
+    }
+    25% {
+        right: 10px;
+        bottom: 27px;
+    }
+    50% {
+        transform: scale(0.8);
+        right: 50px;
+        bottom: 21px;
+    }
+    60% {
+        right: 60px;
+        bottom: 30px;
+    }
+    75% {
+        right: 10px;
+        bottom: 10px;
+    }
+    85% {
+        right: 50px;
+        bottom: 10px;
+    }
+    100% {
+        transform: scale(1.1);
+        right: 30px;
+        bottom: 20px;
+    }
+}
+
 #landing:hover {
     cursor: pointer;
 }
@@ -72,9 +140,10 @@ button {
 #popup {
     top: 50px;
     left: 50px;
-    display: grid;
+    display: none;
+    align-items: center;
     grid-gap: 10px;
-    padding: 0px 0px 0px 20px;
+    padding: 0px 20px;
     grid-template-columns: auto auto auto;
     position: absolute;
     color: #808080;
@@ -88,17 +157,27 @@ button {
 }
 
 #popup button {
+    padding: 20px 20px;
     background-color: #c9c9c9;
     color: white;
 }
 
 @keyframes popup {
-    0% {transform: translateX(-120%)}
-    100% {transform: translateX(0%)}
+    0% {
+        transform: translateX(-120%)
+    }
+    100% {
+        transform: translateX(0%)
+    }
 }
+
 @keyframes popupout {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 #main {
@@ -242,7 +321,9 @@ button {
     0% {
         transform: rotate(0deg) scale(1);
     }
-    60% { transform: scale(1.3)}
+    60% {
+        transform: scale(1.3)
+    }
     100% {
         transform: rotate(-360deg) scale(1);
     }
@@ -253,7 +334,6 @@ button {
         transform: rotate(0deg);
         opacity: 1;
     }
-    
     100% {
         background-color: #d8d8d8;
         transform: rotate(-720deg);
@@ -265,4 +345,3 @@ button {
     margin: 0px;
     text-align: center;
 }
-

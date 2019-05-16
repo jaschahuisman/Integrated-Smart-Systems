@@ -32,6 +32,12 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("user is signed in");
         landing.style.display = "none";
         main.style.display = "grid";
+
+        // Time delay on popup 
+        popup.style.display = "grid";
+        setTimeout(() => {
+            popup.classList.add("out");
+        }, 18000)
     } else {
         // No user is signed in.
         console.log("user is not signed in");
@@ -46,7 +52,9 @@ const login = () => {
     auth.signInAnonymously().catch(function (error) { window.alert(error.message) });
 };
 const logout = () => {
-    auth.currentUser.delete().then(function () { }).catch(function (error) { window.alert(error.message) });
+    setTimeout(
+        auth.currentUser.delete().then(function () { chatRef.remove() }).catch(function (error) { window.alert(error.message) }), 5000
+    )
 };
 
 
@@ -127,8 +135,3 @@ pollSkip.addEventListener("click", nextPoll);
 // Button eventlisteners
 landing.addEventListener("click", login);
 logoutBtn.addEventListener("click", logout);
-
-// Time delay on popup 
-setTimeout(() => {
-    popup.classList.add("out");
-}, 18000)
