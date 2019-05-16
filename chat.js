@@ -25,7 +25,7 @@ auth.onAuthStateChanged(function (user) {
     } else {
         // No user is signed in.
         console.log("user is not signed in");
-        window.location.pathname = "/index.html"
+        window.location = "index.html"
     };
 });
 
@@ -120,7 +120,7 @@ const settingsBtn = document.querySelector("#nav-settings");
 const infoBtn = document.querySelector("#nav-info");
 
 backBtn.addEventListener("click", () => {
-    window.location.pathname = "/index.html";
+    window.location = "index.html";
 });
 
 logoutBtn.addEventListener("click", logout);

@@ -53,7 +53,7 @@ const logout = () => {
 // Chatting
 const startChat = (e) => {
     // console.log("Start Chat", e);
-    window.location.pathname = "/chat.html";
+    window.location = "chat.html";
 };
 const stopChat = (e) => {
     console.log("Stop Chat");
